@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Days of Friendship Adventures! 🎉</title>
+    <style>
+        /* Enhanced CSS with animations */
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+        }
+
+        body {
+            background: linear-gradient(45deg, #111, #2a2a2a);
+            font-family: 'Comic Neue', cursive;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .day-container {
+            min-height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .floating-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .password-gate {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Add more animations as needed */
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgm" loop>
+        <source src="assets/happy-tune.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Day 1 Content -->
+    <div class="day-container" id="day1">
+        <div class="password-gate">
+            <img src="assets/locked-door.gif" class="floating-element" width="200">
+            <h2 class="typewriter">Day 1: Unlock Our First Memory 🗝️</h2>
+            <div class="puzzle">
+                <img src="assets/jigsaw-preview.jpg" id="jigsaw-preview" width="300">
+                <p>What month did we first meet? (all lowercase)</p>
+                <input type="text" id="day1-input">
+                <button onclick="checkDay1()">Unlock!</button>
+            </div>
+        </div>
+        
+        <!-- Hidden Content -->
+        <div class="memory-content" id="day1-content" style="display:none;">
+            <div class="celebration">
+                <img src="assets/confetti.gif" class="celebration-item">
+            </div>
+            <video controls src="assets/day1-video.mp4"></video>
+            <div class="photo-collage">
+                <!-- Add your collage here -->
+            </div>
+            <audio src="assets/day1-voicenote.mp3" controls></audio>
+        </div>
+    </div>
+
+    <!-- Subsequent Days (Duplicate and modify as needed) -->
+    
+    <script>
+        // Enhanced JavaScript with daily challenges
+        const DAY_PASSWORDS = {
+            1: "july",
+            2: "blue",
+            3: "golgappa",
+            // Add more passwords
+        };
+
+        function checkDay1() {
+            const input = document.getElementById('day1-input').value;
+            if(input === DAY_PASSWORDS[1]) {
+                document.getElementById('day1-content').style.display = 'block';
+                startCelebration();
+                document.getElementById('bgm').play();
+            }
+        }
+
+        function startCelebration() {
+            // Add particle effects logic
+            const colors = ['#ff6b6b', '#4ecdc4', '#fff'];
+            for(let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    background: ${colors[Math.floor(Math.random()*colors.length)]};
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    animation: explode 1s ease-out;
+                `;
+                
+                // Add explosion animation
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        // Add more day-specific functions
+    </script>
+</body>
+</html>
